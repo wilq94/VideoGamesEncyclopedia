@@ -1,0 +1,7 @@
+@mixin forLargeScreens($media) {
+    @media (min-width: $media/16+em) { @content; }
+}
+
+@mixin forSmallScreens($media) {
+    @media (max-width: $media/16+em) { @content; }
+}

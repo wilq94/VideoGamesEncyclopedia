@@ -1,0 +1,58 @@
+﻿@model VideoGamesEncyclopedia.Models.recommendation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>recommendation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RecommendationRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecommendationRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WasPresented)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WasPresented)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GenerationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GenerationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.Nickname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.Nickname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

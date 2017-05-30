@@ -1,0 +1,193 @@
+﻿@model VideoGamesEncyclopedia.Models.product
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9]> <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+                      <html>
+                      <head>
+                          <meta charset="utf-8">
+                          <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+                          <meta name="viewport" content="width=device-width, initial-scale=1">
+                          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                          <title>Page Title</title>
+                          <link href="~/Content/styles.css" rel="stylesheet">
+                          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                          <!-- Magnific Popup core CSS file -->
+                          <link rel="stylesheet" href="~/Content/magnific-popup.css">
+
+                          <!-- Magnific Popup core JS file -->
+                          <script src="~/Scripts/jquery.magnific-popup.js"></script>
+                          <script>
+                              $(document).ready(function () {
+                                  $('.gamescreens').magnificPopup({
+                                      delegate: 'a', // child items selector, by clicking on it popup will open
+                                      type: 'image'
+                                      // other options
+                                  });
+                              });
+                          </script>
+                      </head>
+                      <body>
+                          <header class="top-bar full-width">
+                              <div class="row no-margin">
+                                  <div class="grid-3">logo</div>
+                                  <div class="grid-9">
+                                      <!-- Hamburger icon -->
+                                      <button class="menu-link"><span>Menu</span></button>
+                                      <!-- Navigation -->
+                                      <nav id="menu" class="menu" role="navigation">
+                                          <ul>
+                                              <li class="desktop-hidden"><a href="#">Panel Logowania</a></li>
+                                              <li class="desktop-hidden"><a href="#">Rejestracja</a></li>
+                                              <li>
+                                                  @Html.ActionLink("Encyklopedia", "Index", "product")
+                                              </li>
+                                              <li>
+                                                  @Html.ActionLink("Rekomendacje", "Index", "recommendation")
+                                              </li>
+                                              <li>
+                                                  @Html.ActionLink("Top gry", "Index", "product")
+                                              </li>
+                                              <li>
+                                                  @Html.ActionLink("Kontakt", "Contact", "Home")
+                                              </li>
+                                          </ul>
+                                      </nav>
+                                  </div>
+                              </div>
+                              <div class="search-bar full-width">
+                                  <input type="text" class="main-search" placeholder="Wpisz tytuł wyszukiwanej gry...">
+                              </div>
+                          </header>
+
+                          <div class="row gamepage-header">
+                              <div class="container-12">
+                                  <div class="grid-2 gamepage-cover"><img src="~/img/covers/@Model.CoverPath"></div>
+                                  <div class="grid-8">
+                                      <div class="gamepage-title">@Model.Name</div>
+                                      <div class="gamepage-company">@Model.CreatedBy</div>
+                                      <div class="gamepage-premiere">@Model.PremiereDate</div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row"></div>
+                          <main class="container-12" role="main">
+
+                              <section class="grid-9">
+                                  <div class="row">
+                                      @foreach (var item in Model.productcategories)
+                                      {
+                                        <div class="gamepage-tag">@item.category.Name</div>
+                                      }
+
+                                  </div>
+                                  <div class="grid-12 content-container">
+                                      <div class="row">
+                                          <div class="grid-2 gamepage-stats">
+                                              <span class="gamepage-rating">@Model.Rating</span>
+                                              Średnia ocen
+                                          </div>
+                                          <div class="grid-2 gamepage-stats">
+                                              <span class="gamepage-rating">@Model.ratings.Count</span>
+                                              Głosów
+                                          </div>
+                                          <div class="grid-8 gamepage-stats">
+                                              <span class="gamepage-rating">Oddaj głos</span>
+                                              <br />Znakomita gra!
+                                          </div>
+                                      </div>
+                                      <div class="row gamepage-desc">
+<p>
+    @Model.Description
+</p>
+                                      </div>
+                                      <div class="row">
+                                          <div class="grid-3 btn-ignore">
+                                              <button>Ignoruj</button>
+                                          </div>
+                                          <div class="grid-3 btn-wishlist">
+                                              <button>Lista życzeń</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row"></div>
+                                  <div class="row gamescreens">
+                                      @foreach (var item in Model.productscreenshots)
+                                      {
+                                        <div class="grid-3 gamepage-screen">
+                                            <a href="~/img/screens/@item.ScreenshotPath"><img src="~/img/screens/@item.ScreenshotPath"></a>
+                                        </div>
+                                      }
+                                  </div>
+                              </section>
+                              <section class="grid-3 mobile-hidden">
+                                  <div class="grid-12 sidebar-title-dark">
+                                      Panel Logowania
+                                  </div>
+
+                                  <div class="grid-12 sidebar-panel-login">
+                                      <input type="text" name="username" placeholder="Twój login..." class="login">
+                                      <input type="password" name="password" placeholder="Twoje hasło..." class="login">
+                                      <input type="submit" value="Zaloguj się" class="login submit">
+                                      <div class="row"></div>
+                                      <ul class="sidebar-panel-login">
+                                          <li><a href="#">Zarejestruj się.</a></li>
+                                          <li><a href="#">Przypomnij mi hasło.</a></li>
+                                          <li><a href="#">Przejdź do strony logowania.</a></li>
+                                      </ul>
+                                  </div>
+
+                                  <div class="grid-12 sidebar-title-light">
+                                      Panel Użytkownika
+                                  </div>
+
+                                  <div class="grid-12 sidebar-panel-user">
+                                      <div class="user-info">
+                                          <img src="~/img/user/noav.png" class="avatar rounded">
+                                          <div class="user-info-usr">LoginUsera112</div>
+                                          <div class="user-info-usr"><a href="#">Edytuj swój profil</a></div>
+                                      </div>
+                                      <ul class="sidebar-panel-user">
+                                          <li><a href="#">Zobacz listę życzeń</a></li>
+                                          <li><a href="#">Zobacz listę gier ignorowanych</a></li>
+                                          <li style="margin-bottom: .9em;"><a href="#">Zobacz listę gier ocenionych</a></li>
+                                          <li><a href="admin">Panel administratora</a></li>
+                                          <li style="margin-bottom: .9em;"><a href="#">Panel redaktora</a></li>
+                                          <li><a href="#">Wyloguj</a></li>
+                                      </ul>
+                                  </div>
+
+                              </section>
+                          </main>
+                          <div class="row" style="margin-bottom: 40px;"></div>
+                          <footer class="footer-bar full-width">
+                              <div class="row no-margin">
+                                  <div class="grid-12">
+                                      <span class="copyright">Copyright by Filip and Pawel
+                                  </div>
+                              </div>
+                              </div>
+                          </footer>
+                          <script src="~/Scripts/respond.min.js"></script>
+                          <script>
+                              $(function () {
+                                  //Add class .js to the body if JS is enabled
+                                  $("body").addClass("js");
+                                  //Set up the click behavior
+                                  $(".menu-link").click(function () {
+                                      //Toggle the class .active on the hamburger icon
+                                      $(this).toggleClass("active");
+                                      //Toggle the class .active on the menu to make it slide down/up
+                                      $(".menu").toggleClass("active");
+                                  });
+                              });
+                          </script>
+                      </body>
+                      </html>

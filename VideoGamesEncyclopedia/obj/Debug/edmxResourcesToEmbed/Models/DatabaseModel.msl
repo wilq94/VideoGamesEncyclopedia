@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VideoGamesEncyclopediaDbModelStoreContainer" CdmEntityContainer="VideoGamesEncyclopediaDbEntities">
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ignoredproducts">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.ignoredproduct">
+        <MappingFragment StoreEntitySet="ignoredproducts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productcategories">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.productcategory">
+        <MappingFragment StoreEntitySet="productcategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CoverPath" ColumnName="CoverPath" />
+          <ScalarProperty Name="PremiereDate" ColumnName="PremiereDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productscreenshots">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.productscreenshot">
+        <MappingFragment StoreEntitySet="productscreenshots">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ScreenshotPath" ColumnName="ScreenshotPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ratings">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.rating">
+        <MappingFragment StoreEntitySet="ratings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recommendations">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.recommendation">
+        <MappingFragment StoreEntitySet="recommendations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="RecommendationRating" ColumnName="RecommendationRating" />
+          <ScalarProperty Name="WasPresented" ColumnName="WasPresented" />
+          <ScalarProperty Name="GenerationDate" ColumnName="GenerationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wishedproducts">
+      <EntityTypeMapping TypeName="VideoGamesEncyclopediaDbModel.wishedproduct">
+        <MappingFragment StoreEntitySet="wishedproducts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

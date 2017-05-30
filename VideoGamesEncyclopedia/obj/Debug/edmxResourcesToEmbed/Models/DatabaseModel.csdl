@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VideoGamesEncyclopediaDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="productcategories" Relationship="Self.CategoryId2" FromRole="categories" ToRole="productcategories" />
+  </EntityType>
+  <EntityType Name="ignoredproduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.ProductId" FromRole="ignoredproducts" ToRole="products" />
+    <NavigationProperty Name="user" Relationship="Self.UserId" FromRole="ignoredproducts" ToRole="users" />
+  </EntityType>
+  <EntityType Name="productcategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="CategoryId" Type="Int32" />
+    <NavigationProperty Name="category" Relationship="Self.CategoryId2" FromRole="productcategories" ToRole="categories" />
+    <NavigationProperty Name="product" Relationship="Self.ProductId2" FromRole="productcategories" ToRole="products" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CoverPath" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PremiereDate" Type="DateTime" />
+    <Property Name="CreatedBy" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="Rating" Type="Single" />
+    <NavigationProperty Name="ignoredproducts" Relationship="Self.ProductId" FromRole="products" ToRole="ignoredproducts" />
+    <NavigationProperty Name="productcategories" Relationship="Self.ProductId2" FromRole="products" ToRole="productcategories" />
+    <NavigationProperty Name="productscreenshots" Relationship="Self.ProductId3" FromRole="products" ToRole="productscreenshots" />
+    <NavigationProperty Name="ratings" Relationship="Self.ProductIdRatings" FromRole="products" ToRole="ratings" />
+    <NavigationProperty Name="recommendations" Relationship="Self.ProductIdRecommendations" FromRole="products" ToRole="recommendations" />
+    <NavigationProperty Name="wishedproducts" Relationship="Self.ProductIdWishedProducts" FromRole="products" ToRole="wishedproducts" />
+  </EntityType>
+  <EntityType Name="productscreenshot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="ScreenshotPath" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="product" Relationship="Self.ProductId3" FromRole="productscreenshots" ToRole="products" />
+  </EntityType>
+  <EntityType Name="rating">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Rate" Type="Single" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.ProductIdRatings" FromRole="ratings" ToRole="products" />
+    <NavigationProperty Name="user" Relationship="Self.UserIdRatings" FromRole="ratings" ToRole="users" />
+  </EntityType>
+  <EntityType Name="recommendation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="RecommendationRating" Type="Single" Nullable="false" />
+    <Property Name="WasPresented" Type="Boolean" Nullable="false" />
+    <Property Name="GenerationDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.ProductIdRecommendations" FromRole="recommendations" ToRole="products" />
+    <NavigationProperty Name="user" Relationship="Self.UserIdRecommendations" FromRole="recommendations" ToRole="users" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="users" Relationship="Self.Role1" FromRole="roles" ToRole="users" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Nickname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" />
+    <NavigationProperty Name="ignoredproducts" Relationship="Self.UserId" FromRole="users" ToRole="ignoredproducts" />
+    <NavigationProperty Name="ratings" Relationship="Self.UserIdRatings" FromRole="users" ToRole="ratings" />
+    <NavigationProperty Name="recommendations" Relationship="Self.UserIdRecommendations" FromRole="users" ToRole="recommendations" />
+    <NavigationProperty Name="role" Relationship="Self.Role1" FromRole="users" ToRole="roles" />
+    <NavigationProperty Name="wishedproducts" Relationship="Self.UserIdWishedProducts" FromRole="users" ToRole="wishedproducts" />
+  </EntityType>
+  <EntityType Name="wishedproduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.ProductIdWishedProducts" FromRole="wishedproducts" ToRole="products" />
+    <NavigationProperty Name="user" Relationship="Self.UserIdWishedProducts" FromRole="wishedproducts" ToRole="users" />
+  </EntityType>
+  <Association Name="CategoryId2">
+    <End Role="categories" Type="Self.category" Multiplicity="0..1" />
+    <End Role="productcategories" Type="Self.productcategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="productcategories">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductId">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="ignoredproducts" Type="Self.ignoredproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ignoredproducts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserId">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="ignoredproducts" Type="Self.ignoredproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ignoredproducts">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductId2">
+    <End Role="products" Type="Self.product" Multiplicity="0..1" />
+    <End Role="productcategories" Type="Self.productcategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="productcategories">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductId3">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="productscreenshots" Type="Self.productscreenshot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="productscreenshots">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductIdRatings">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="ratings" Type="Self.rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ratings">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductIdRecommendations">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="recommendations" Type="Self.recommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="recommendations">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductIdWishedProducts">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="wishedproducts" Type="Self.wishedproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wishedproducts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserIdRatings">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="ratings" Type="Self.rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ratings">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserIdRecommendations">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="recommendations" Type="Self.recommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="recommendations">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Role1">
+    <End Role="roles" Type="Self.role" Multiplicity="1" />
+    <End Role="users" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserIdWishedProducts">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="wishedproducts" Type="Self.wishedproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wishedproducts">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VideoGamesEncyclopediaDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="ignoredproducts" EntityType="Self.ignoredproduct" />
+    <EntitySet Name="productcategories" EntityType="Self.productcategory" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="productscreenshots" EntityType="Self.productscreenshot" />
+    <EntitySet Name="ratings" EntityType="Self.rating" />
+    <EntitySet Name="recommendations" EntityType="Self.recommendation" />
+    <EntitySet Name="roles" EntityType="Self.role" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="wishedproducts" EntityType="Self.wishedproduct" />
+    <AssociationSet Name="CategoryId2" Association="Self.CategoryId2">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="productcategories" EntitySet="productcategories" />
+    </AssociationSet>
+    <AssociationSet Name="ProductId" Association="Self.ProductId">
+      <End Role="products" EntitySet="products" />
+      <End Role="ignoredproducts" EntitySet="ignoredproducts" />
+    </AssociationSet>
+    <AssociationSet Name="UserId" Association="Self.UserId">
+      <End Role="users" EntitySet="users" />
+      <End Role="ignoredproducts" EntitySet="ignoredproducts" />
+    </AssociationSet>
+    <AssociationSet Name="ProductId2" Association="Self.ProductId2">
+      <End Role="products" EntitySet="products" />
+      <End Role="productcategories" EntitySet="productcategories" />
+    </AssociationSet>
+    <AssociationSet Name="ProductId3" Association="Self.ProductId3">
+      <End Role="products" EntitySet="products" />
+      <End Role="productscreenshots" EntitySet="productscreenshots" />
+    </AssociationSet>
+    <AssociationSet Name="ProductIdRatings" Association="Self.ProductIdRatings">
+      <End Role="products" EntitySet="products" />
+      <End Role="ratings" EntitySet="ratings" />
+    </AssociationSet>
+    <AssociationSet Name="ProductIdRecommendations" Association="Self.ProductIdRecommendations">
+      <End Role="products" EntitySet="products" />
+      <End Role="recommendations" EntitySet="recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="ProductIdWishedProducts" Association="Self.ProductIdWishedProducts">
+      <End Role="products" EntitySet="products" />
+      <End Role="wishedproducts" EntitySet="wishedproducts" />
+    </AssociationSet>
+    <AssociationSet Name="UserIdRatings" Association="Self.UserIdRatings">
+      <End Role="users" EntitySet="users" />
+      <End Role="ratings" EntitySet="ratings" />
+    </AssociationSet>
+    <AssociationSet Name="UserIdRecommendations" Association="Self.UserIdRecommendations">
+      <End Role="users" EntitySet="users" />
+      <End Role="recommendations" EntitySet="recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="Role" Association="Self.Role1">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="UserIdWishedProducts" Association="Self.UserIdWishedProducts">
+      <End Role="users" EntitySet="users" />
+      <End Role="wishedproducts" EntitySet="wishedproducts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
