@@ -34,8 +34,12 @@
                 <!-- Navigation -->
                 <nav id="menu" class="menu" role="navigation">
                     <ul>
-                        <li class="desktop-hidden"><a href="#">Panel Logowania</a></li>
-                        <li class="desktop-hidden"><a href="#">Rejestracja</a></li>
+                        <li class="desktop-hidden">
+                            @Html.ActionLink("Przejdź do strony logowania", "Login", "Account")
+                        </li>
+                        <li class="desktop-hidden">
+                            @Html.ActionLink("Zarejestruj się", "Register", "Account")
+                        </li>
                         <li>
                             @Html.ActionLink("Encyklopedia", "Index", "product")
                         </li>
@@ -151,13 +155,13 @@
             <div class="grid-12 sidebar-panel-user">
                 <div class="user-info">
                     <img src="~/img/user/noav.png" class="avatar rounded">
-                    <div class="user-info-usr">LoginUsera112</div>
-                    <div class="user-info-usr"><a href="#">Edytuj swój profil</a></div>
+                    <div class="user-info-usr">@User.Identity.GetUserName()</div>
+                    <div class="user-info-usr"><a href="@Url.Action("Index", "Manage")">Edytuj swój profil</a></div>
                 </div>
                 <ul class="sidebar-panel-user">
-                    <li><a href="#">Zobacz listę życzeń</a></li>
-                    <li><a href="#">Zobacz listę gier ignorowanych</a></li>
-                    <li style="margin-bottom: .9em;"><a href="#">Zobacz listę gier ocenionych</a></li>
+                    <li><a href="@Url.Action("WishList", "UserPanel")">Zobacz listę życzeń</a></li>
+                    <li><a href="@Url.Action("IgnoredList", "UserPanel")">Zobacz listę gier ignorowanych</a></li>
+                    <li style="margin-bottom: .9em;"><a href="@Url.Action("RatedList", "UserPanel")">Zobacz listę gier ocenionych</a></li>
                     <li><a href="@Url.Action("Index", "AdminPanel")">Panel administratora</a></li>
                     <li style="margin-bottom: .9em;"><a href="@Url.Action("Index", "AdminPanel")">Panel redaktora</a></li>
                     <li>

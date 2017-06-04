@@ -495,6 +495,7 @@
     <Compile Include="Controllers\recommendationController.cs" />
     <Compile Include="Controllers\roleController.cs" />
     <Compile Include="Controllers\userController.cs" />
+    <Compile Include="Controllers\UserPanelController.cs" />
     <Compile Include="DAL\VideoGamesEncyclopediaDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -684,6 +685,11 @@
     <Content Include="Views\AdminPanel\Categories.cshtml" />
     <Content Include="Views\AdminPanel\Tickets.cshtml" />
     <Content Include="Views\AdminPanel\Settings.cshtml" />
+    <Content Include="Views\UserPanel\Index.cshtml" />
+    <Content Include="Views\UserPanel\EditProfile.cshtml" />
+    <Content Include="Views\UserPanel\WishList.cshtml" />
+    <Content Include="Views\UserPanel\IgnoredList.cshtml" />
+    <Content Include="Views\UserPanel\RatedList.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
