@@ -10,18 +10,18 @@ using VideoGamesEncyclopedia.Models;
 
 namespace VideoGamesEncyclopedia.Controllers
 {
-    public class ignoredproductController : Controller
+    public class IgnoredProductController : Controller
     {
         private VideoGamesEncyclopediaDbEntities db = new VideoGamesEncyclopediaDbEntities();
 
-        // GET: ignoredproduct
+        // GET: IgnoredProduct
         public ActionResult Index()
         {
-            var ignoredproducts = db.ignoredproducts.Include(i => i.product).Include(i => i.user);
+            var ignoredproducts = db.ignoredproducts.Include(i => i.aspnetuser).Include(i => i.product);
             return View(ignoredproducts.ToList());
         }
 
-        // GET: ignoredproduct/Details/5
+        // GET: IgnoredProduct/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,15 +36,15 @@ namespace VideoGamesEncyclopedia.Controllers
             return View(ignoredproduct);
         }
 
-        // GET: ignoredproduct/Create
+        // GET: IgnoredProduct/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = new SelectList(db.aspnetusers, "Id", "Email");
             ViewBag.ProductId = new SelectList(db.products, "Id", "Name");
-            ViewBag.UserId = new SelectList(db.users, "Id", "Nickname");
             return View();
         }
 
-        // POST: ignoredproduct/Create
+        // POST: IgnoredProduct/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,12 +58,12 @@ namespace VideoGamesEncyclopedia.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UserId = new SelectList(db.aspnetusers, "Id", "Email", ignoredproduct.UserId);
             ViewBag.ProductId = new SelectList(db.products, "Id", "Name", ignoredproduct.ProductId);
-            ViewBag.UserId = new SelectList(db.users, "Id", "Nickname", ignoredproduct.UserId);
             return View(ignoredproduct);
         }
 
-        // GET: ignoredproduct/Edit/5
+        // GET: IgnoredProduct/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -75,12 +75,12 @@ namespace VideoGamesEncyclopedia.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserId = new SelectList(db.aspnetusers, "Id", "Email", ignoredproduct.UserId);
             ViewBag.ProductId = new SelectList(db.products, "Id", "Name", ignoredproduct.ProductId);
-            ViewBag.UserId = new SelectList(db.users, "Id", "Nickname", ignoredproduct.UserId);
             return View(ignoredproduct);
         }
 
-        // POST: ignoredproduct/Edit/5
+        // POST: IgnoredProduct/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -93,12 +93,12 @@ namespace VideoGamesEncyclopedia.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserId = new SelectList(db.aspnetusers, "Id", "Email", ignoredproduct.UserId);
             ViewBag.ProductId = new SelectList(db.products, "Id", "Name", ignoredproduct.ProductId);
-            ViewBag.UserId = new SelectList(db.users, "Id", "Nickname", ignoredproduct.UserId);
             return View(ignoredproduct);
         }
 
-        // GET: ignoredproduct/Delete/5
+        // GET: IgnoredProduct/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace VideoGamesEncyclopedia.Controllers
             return View(ignoredproduct);
         }
 
-        // POST: ignoredproduct/Delete/5
+        // POST: IgnoredProduct/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

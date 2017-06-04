@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b96f4d8a89354908ae752f64b2f69d10" Name="Diagram1">
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.aspnetrole" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.aspnetuserclaim" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.aspnetuserlogin" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.aspnetuser" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.category" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.ignoredproduct" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.productcategory" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.product" Width="1.5" PointX="3.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.productscreenshot" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.rating" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.recommendation" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.ticket" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoGamesEncyclopediaDbModel.wishedproduct" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.ApplicationUser_Claims" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.ApplicationUser_Logins" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.ReportedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.SolvedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.UserIdIgnoredProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.UserIdRatings" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.UserIdRecommendations" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.UserIdWishedProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.CategoryId2" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.ProductId2" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.ProductId3" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.ProductIdRatings" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.ProductIdRecommendations" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.ProductIdWishedProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="VideoGamesEncyclopediaDbModel.aspnetuserroles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -15,11 +15,11 @@ namespace VideoGamesEncyclopedia.Models
     public partial class rating
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int ProductId { get; set; }
         public float Rate { get; set; }
     
+        public virtual aspnetuser aspnetuser { get; set; }
         public virtual product product { get; set; }
-        public virtual user user { get; set; }
     }
 }

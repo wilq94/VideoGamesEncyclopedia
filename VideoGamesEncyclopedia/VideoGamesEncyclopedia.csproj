@@ -484,17 +484,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
+    <Compile Include="Controllers\AspNetRoleController.cs" />
+    <Compile Include="Controllers\AspNetUserClaimController.cs" />
+    <Compile Include="Controllers\AspnetuserController.cs" />
+    <Compile Include="Controllers\AspNetUserLoginController.cs" />
     <Compile Include="Controllers\categoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ignoredproductController.cs" />
+    <Compile Include="Controllers\IgnoredProductController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\productcategoryController.cs" />
     <Compile Include="Controllers\productController.cs" />
     <Compile Include="Controllers\productscreenshotController.cs" />
-    <Compile Include="Controllers\ratingController.cs" />
-    <Compile Include="Controllers\recommendationController.cs" />
-    <Compile Include="Controllers\roleController.cs" />
-    <Compile Include="Controllers\userController.cs" />
     <Compile Include="Controllers\UserPanelController.cs" />
     <Compile Include="DAL\VideoGamesEncyclopediaDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -502,56 +502,65 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminPanelViewModels.cs" />
+    <Compile Include="Models\aspnetrole.cs">
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnetuser.cs">
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnetuserclaim.cs">
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnetuserlogin.cs">
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\category.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DatabaseModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DatabaseModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DatabaseModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ignoredproduct.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MainPageViewModels.cs" />
-    <Compile Include="Models\RecentlyAddedViewModel.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\product.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\productcategory.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\productscreenshot.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\rating.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RecentlyAddedViewModel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\recommendation.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\role.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    <Compile Include="Models\ticket.cs">
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TopRatedViewModel.cs" />
-    <Compile Include="Models\user.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UserPanelViewModels.cs" />
+    <Compile Include="Models\VideoGamesEncyclopediaDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideoGamesEncyclopediaDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideoGamesEncyclopediaDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\wishedproduct.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -579,27 +588,20 @@
     <Content Include="img\screens\baldurs3.jpg" />
     <Content Include="img\thumb\maxpayne.jpg" />
     <Content Include="img\user\noav.png" />
-    <Content Include="Models\DatabaseModel.Context.tt">
+    <Content Include="Models\VideoGamesEncyclopediaDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.edmx</DependentUpon>
+      <LastGenOutput>VideoGamesEncyclopediaDbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DatabaseModel.tt">
+    <Content Include="Models\VideoGamesEncyclopediaDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
+      <DependentUpon>VideoGamesEncyclopediaDbModel.edmx</DependentUpon>
+      <LastGenOutput>VideoGamesEncyclopediaDbModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\DatabaseModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DatabaseModel.edmx.diagram">
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.magnific-popup.js" />
     <Content Include="Views\category\Create.cshtml" />
@@ -607,11 +609,6 @@
     <Content Include="Views\category\Details.cshtml" />
     <Content Include="Views\category\Edit.cshtml" />
     <Content Include="Views\category\Index.cshtml" />
-    <Content Include="Views\ignoredproduct\Create.cshtml" />
-    <Content Include="Views\ignoredproduct\Delete.cshtml" />
-    <Content Include="Views\ignoredproduct\Details.cshtml" />
-    <Content Include="Views\ignoredproduct\Edit.cshtml" />
-    <Content Include="Views\ignoredproduct\Index.cshtml" />
     <Content Include="Views\product\Create.cshtml" />
     <Content Include="Views\product\Delete.cshtml" />
     <Content Include="Views\product\Details.cshtml" />
@@ -632,25 +629,10 @@
     <Content Include="Views\rating\Details.cshtml" />
     <Content Include="Views\rating\Edit.cshtml" />
     <Content Include="Views\rating\Index.cshtml" />
-    <Content Include="Views\recommendation\Create.cshtml" />
-    <Content Include="Views\recommendation\Delete.cshtml" />
-    <Content Include="Views\recommendation\Details.cshtml" />
-    <Content Include="Views\recommendation\Edit.cshtml" />
-    <Content Include="Views\recommendation\Index.cshtml" />
-    <Content Include="Views\role\Create.cshtml" />
-    <Content Include="Views\role\Delete.cshtml" />
-    <Content Include="Views\role\Details.cshtml" />
-    <Content Include="Views\role\Edit.cshtml" />
-    <Content Include="Views\role\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\user\Create.cshtml" />
-    <Content Include="Views\user\Delete.cshtml" />
-    <Content Include="Views\user\Details.cshtml" />
-    <Content Include="Views\user\Edit.cshtml" />
-    <Content Include="Views\user\Index.cshtml" />
     <Content Include="Content\admin\bower.json" />
     <Content Include="Content\admin\css\all.sass" />
     <Content Include="Content\admin\css\components\assorted.sass" />
@@ -690,6 +672,38 @@
     <Content Include="Views\UserPanel\WishList.cshtml" />
     <Content Include="Views\UserPanel\IgnoredList.cshtml" />
     <Content Include="Views\UserPanel\RatedList.cshtml" />
+    <EntityDeploy Include="Models\VideoGamesEncyclopediaDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VideoGamesEncyclopediaDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\VideoGamesEncyclopediaDbModel.edmx.diagram">
+      <DependentUpon>VideoGamesEncyclopediaDbModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\Aspnetuser\Create.cshtml" />
+    <Content Include="Views\Aspnetuser\Delete.cshtml" />
+    <Content Include="Views\Aspnetuser\Details.cshtml" />
+    <Content Include="Views\Aspnetuser\Edit.cshtml" />
+    <Content Include="Views\Aspnetuser\Index.cshtml" />
+    <Content Include="Views\AspNetRole\Create.cshtml" />
+    <Content Include="Views\AspNetRole\Delete.cshtml" />
+    <Content Include="Views\AspNetRole\Details.cshtml" />
+    <Content Include="Views\AspNetRole\Edit.cshtml" />
+    <Content Include="Views\AspNetRole\Index.cshtml" />
+    <Content Include="Views\AspNetUserClaim\Create.cshtml" />
+    <Content Include="Views\AspNetUserClaim\Delete.cshtml" />
+    <Content Include="Views\AspNetUserClaim\Details.cshtml" />
+    <Content Include="Views\AspNetUserClaim\Edit.cshtml" />
+    <Content Include="Views\AspNetUserClaim\Index.cshtml" />
+    <Content Include="Views\AspNetUserLogin\Create.cshtml" />
+    <Content Include="Views\AspNetUserLogin\Delete.cshtml" />
+    <Content Include="Views\AspNetUserLogin\Details.cshtml" />
+    <Content Include="Views\AspNetUserLogin\Edit.cshtml" />
+    <Content Include="Views\AspNetUserLogin\Index.cshtml" />
+    <Content Include="Views\IgnoredProduct\Create.cshtml" />
+    <Content Include="Views\IgnoredProduct\Delete.cshtml" />
+    <Content Include="Views\IgnoredProduct\Details.cshtml" />
+    <Content Include="Views\IgnoredProduct\Edit.cshtml" />
+    <Content Include="Views\IgnoredProduct\Index.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

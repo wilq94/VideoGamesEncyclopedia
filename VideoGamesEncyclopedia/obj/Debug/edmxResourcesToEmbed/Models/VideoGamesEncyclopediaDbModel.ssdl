@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VideoGamesEncyclopediaDbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="aspnetroles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnetuserclaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="longtext" />
+    <Property Name="ClaimValue" Type="longtext" />
+  </EntityType>
+  <EntityType Name="aspnetuserlogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnetuserroles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnetusers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bool" Nullable="false" />
+    <Property Name="PasswordHash" Type="longtext" />
+    <Property Name="SecurityStamp" Type="longtext" />
+    <Property Name="PhoneNumber" Type="longtext" />
+    <Property Name="PhoneNumberConfirmed" Type="bool" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bool" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" Precision="0" />
+    <Property Name="LockoutEnabled" Type="bool" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ignoredproducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productcategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" />
+    <Property Name="CategoryId" Type="int" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="CoverPath" Type="varchar" MaxLength="45" />
+    <Property Name="PremiereDate" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="45" />
+    <Property Name="Description" Type="text" />
+    <Property Name="Rating" Type="float" />
+    <Property Name="CreationDate" Type="datetime" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productscreenshots">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ScreenshotPath" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="ratings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Rate" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="recommendations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="RecommendationRating" Type="float" Nullable="false" />
+    <Property Name="WasPresented" Type="bool" Nullable="false" />
+    <Property Name="GenerationDate" Type="datetime" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tickets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ReportedBy" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="SolvedBy" Type="varchar" MaxLength="128" />
+    <Property Name="Description" Type="text" />
+    <Property Name="IsFinished" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="wishedproducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ApplicationUser_Claims">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aspnetuserclaims" Type="Self.aspnetuserclaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserclaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationUser_Logins">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aspnetuserlogins" Type="Self.aspnetuserlogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserlogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationUser_Roles">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserroles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryId2">
+    <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+    <End Role="productcategories" Type="Self.productcategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="productcategories">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IdentityRole_Users">
+    <End Role="aspnetroles" Type="Self.aspnetroles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetroles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserroles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductId">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="ignoredproducts" Type="Self.ignoredproducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ignoredproducts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductId2">
+    <End Role="products" Type="Self.products" Multiplicity="0..1" />
+    <End Role="productcategories" Type="Self.productcategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="productcategories">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductId3">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="productscreenshots" Type="Self.productscreenshots" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="productscreenshots">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductIdRatings">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="ratings" Type="Self.ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ratings">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductIdRecommendations">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="recommendations" Type="Self.recommendations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="recommendations">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductIdWishedProducts">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="wishedproducts" Type="Self.wishedproducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wishedproducts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportedBy">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1" />
+    <End Role="tickets" Type="Self.tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tickets">
+        <PropertyRef Name="ReportedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SolvedBy">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="0..1" />
+    <End Role="tickets" Type="Self.tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tickets">
+        <PropertyRef Name="SolvedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserIdIgnoredProducts">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1" />
+    <End Role="ignoredproducts" Type="Self.ignoredproducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ignoredproducts">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserIdRatings">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1" />
+    <End Role="ratings" Type="Self.ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ratings">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserIdRecommendations">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1" />
+    <End Role="recommendations" Type="Self.recommendations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="recommendations">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserIdWishedProducts">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1" />
+    <End Role="wishedproducts" Type="Self.wishedproducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wishedproducts">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VideoGamesEncyclopediaDbModelStoreContainer">
+    <EntitySet Name="aspnetroles" EntityType="Self.aspnetroles" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="aspnetuserclaims" EntityType="Self.aspnetuserclaims" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogins" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="aspnetuserroles" EntityType="Self.aspnetuserroles" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="aspnetusers" EntityType="Self.aspnetusers" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="categories" EntityType="Self.categories" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="ignoredproducts" EntityType="Self.ignoredproducts" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="productcategories" EntityType="Self.productcategories" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="productscreenshots" EntityType="Self.productscreenshots" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="ratings" EntityType="Self.ratings" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="recommendations" EntityType="Self.recommendations" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="tickets" EntityType="Self.tickets" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <EntitySet Name="wishedproducts" EntityType="Self.wishedproducts" Schema="videogamesencyclopediadb" store:Type="Tables" />
+    <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationUser_Roles" Association="Self.ApplicationUser_Roles">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryId2" Association="Self.CategoryId2">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="productcategories" EntitySet="productcategories" />
+    </AssociationSet>
+    <AssociationSet Name="IdentityRole_Users" Association="Self.IdentityRole_Users">
+      <End Role="aspnetroles" EntitySet="aspnetroles" />
+      <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+    </AssociationSet>
+    <AssociationSet Name="ProductId" Association="Self.ProductId">
+      <End Role="products" EntitySet="products" />
+      <End Role="ignoredproducts" EntitySet="ignoredproducts" />
+    </AssociationSet>
+    <AssociationSet Name="ProductId2" Association="Self.ProductId2">
+      <End Role="products" EntitySet="products" />
+      <End Role="productcategories" EntitySet="productcategories" />
+    </AssociationSet>
+    <AssociationSet Name="ProductId3" Association="Self.ProductId3">
+      <End Role="products" EntitySet="products" />
+      <End Role="productscreenshots" EntitySet="productscreenshots" />
+    </AssociationSet>
+    <AssociationSet Name="ProductIdRatings" Association="Self.ProductIdRatings">
+      <End Role="products" EntitySet="products" />
+      <End Role="ratings" EntitySet="ratings" />
+    </AssociationSet>
+    <AssociationSet Name="ProductIdRecommendations" Association="Self.ProductIdRecommendations">
+      <End Role="products" EntitySet="products" />
+      <End Role="recommendations" EntitySet="recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="ProductIdWishedProducts" Association="Self.ProductIdWishedProducts">
+      <End Role="products" EntitySet="products" />
+      <End Role="wishedproducts" EntitySet="wishedproducts" />
+    </AssociationSet>
+    <AssociationSet Name="ReportedBy" Association="Self.ReportedBy">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="tickets" EntitySet="tickets" />
+    </AssociationSet>
+    <AssociationSet Name="SolvedBy" Association="Self.SolvedBy">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="tickets" EntitySet="tickets" />
+    </AssociationSet>
+    <AssociationSet Name="UserIdIgnoredProducts" Association="Self.UserIdIgnoredProducts">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="ignoredproducts" EntitySet="ignoredproducts" />
+    </AssociationSet>
+    <AssociationSet Name="UserIdRatings" Association="Self.UserIdRatings">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="ratings" EntitySet="ratings" />
+    </AssociationSet>
+    <AssociationSet Name="UserIdRecommendations" Association="Self.UserIdRecommendations">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="recommendations" EntitySet="recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="UserIdWishedProducts" Association="Self.UserIdWishedProducts">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="wishedproducts" EntitySet="wishedproducts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -15,8 +15,7 @@ namespace VideoGamesEncyclopedia.Controllers
 
         public ActionResult Index(string searchString)
         {
-            //dodac pole "data dodania do bazy"
-            var recentlyAdded = db.products.Take(2).ToList();
+            var recentlyAdded = db.products.OrderByDescending(x => x.CreationDate).Take(2).ToList();
             var topRated = db.products.OrderByDescending(x => x.Rating).Take(4).ToList();
             var view = new MainPageViewModels(recentlyAdded, topRated);
 

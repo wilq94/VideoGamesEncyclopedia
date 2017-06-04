@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using MySql.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VideoGamesEncyclopedia.Models;
 
 namespace VideoGamesEncyclopedia.Controllers
 {
@@ -11,27 +14,69 @@ namespace VideoGamesEncyclopedia.Controllers
         // GET: UserPanel
         public ActionResult Index()
         {
-            return View();
+            if (isUser())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
-
-        public ActionResult EditProfile()
-        {
-            return View();
-        }
-
         public ActionResult WishList()
         {
-            return View();
+            if (isUser())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult IgnoredList()
         {
-            return View();
+            if (isUser())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult RatedList()
         {
-            return View();
+            if (isUser())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        public Boolean isUser()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                VideoGamesEncyclopediaDbEntities context = new VideoGamesEncyclopediaDbEntities();
+                var UserManager = new UserManager<ApplicationUser>(new MySqlUserStore<ApplicationUser>("DefaultConnection"));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if (s[0].ToString() == "Admin" || s[0].ToString() == "User" || s[0].ToString() == "Publisher")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }

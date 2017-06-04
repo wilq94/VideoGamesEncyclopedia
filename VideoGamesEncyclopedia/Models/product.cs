@@ -11,8 +11,7 @@ namespace VideoGamesEncyclopedia.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,12 +28,11 @@ namespace VideoGamesEncyclopedia.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string CoverPath { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}",
-               ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> PremiereDate { get; set; }
         public string CreatedBy { get; set; }
         public string Description { get; set; }
         public Nullable<float> Rating { get; set; }
+        public System.DateTime CreationDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ignoredproduct> ignoredproducts { get; set; }
