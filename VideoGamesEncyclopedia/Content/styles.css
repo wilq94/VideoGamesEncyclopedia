@@ -265,7 +265,7 @@ body { background: #f1f1e7; font-family: Segoe UI, Verdana; margin: 0; padding: 
 
 .control-label {
 	font-weight: 100;
-	font-size: 1.2rem;
+	font-size: 1.22rem;
 	text-transform: uppercase;
 }
 
@@ -289,5 +289,16 @@ body { background: #f1f1e7; font-family: Segoe UI, Verdana; margin: 0; padding: 
 		cursor: pointer;
 		background: #00174e;
 	}
+
+.products-title { font-weight: 100; font-size: 2rem; text-align: center; }
+
+.products-title a { text-decoration: none; color: #386cae; }
+
+@media (min-width: 42.5em) { .products-title { text-align: left; font-size: 1.3em; font-weight: 400; } }
+
+.products-author { font-weight: 100; font-size: 0.9rem; text-align: left; }
+
+.products-desc { text-align: justify; font-size: 0.8em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-height: 13px; max-height: 26px; }
+
 
 /*# sourceMappingURL=styles.css.map */

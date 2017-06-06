@@ -1,65 +1,157 @@
-﻿@model IEnumerable<VideoGamesEncyclopedia.Models.product>
+﻿
+@using Microsoft.AspNet.Identity;
+@using VideoGamesEncyclopedia.Extensions;
 
-
+@model IEnumerable<VideoGamesEncyclopedia.Models.product>
 
 @{
-    ViewBag.Title = "Index";
+	Layout = "";
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9]> <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Strona główna</title>
+	<link href="~/Content/styles.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+	<header class="top-bar full-width">
+		<div class="row no-margin">
+			<div class="grid-3">logo</div>
+			<div class="grid-9">
+				<!-- Hamburger icon -->
+				<button class="menu-link"><span>Menu</span></button>
+				<!-- Navigation -->
+				<nav id="menu" class="menu" role="navigation">
+					<ul>
+						<li class="desktop-hidden">
+							@Html.ActionLink("Przejdź do strony logowania", "Login", "Account")
+						</li>
+						<li class="desktop-hidden">
+							@Html.ActionLink("Zarejestruj się", "Register", "Account")
+						</li>
+						<li>
+							@Html.ActionLink("Encyklopedia", "Index", "product")
+						</li>
+						<li>
+							@Html.ActionLink("Rekomendacje", "Index", "recommendation")
+						</li>
+						<li>
+							@Html.ActionLink("Top gry", "Index", "product")
+						</li>
+						<li>
+							@Html.ActionLink("Kontakt", "Contact")
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		@using (Html.BeginForm("Index", "product", FormMethod.Get))
+            {
+			<div class="search-bar full-width">
+				@Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { placeholder = "Wpisz tytuł wyszukiwanej gry...", @class = "main-search" })
+				<input hidden type="submit" value="Search" />
+			</div>
+            }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CoverPath)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PremiereDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
-        <th></th>
-    </tr>
+	</header>
+	<main class="container-12" role="main">
+		<section class="grid-9">
+			<div class="grid-12 main-title">Spis Gier</div>
+			<div class="grid-12 content-container">
+				@foreach (var item in Model)
+				{
+					
+					<div class="grid-12 last-added-row">
+						<div class="row">
+							<div class="grid-1 cover">
+								<a href='@Url.Action("Gamecard/"+item.Id, "product")'>
+									<img src="~/img/covers/@item.CoverPath">
+								</a>
+							</div>
+							<div class="grid-11">
+								<div class="grid-12 products-title"><a href='@Url.Action("Gamecard/"+item.Id, "product")'>@item.Name</a></div>
+								<div class="grid-12 products-author">@item.CreatedBy</div>
+								<div class="grid-12 products-desc">@item.Description</div>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+		</section>
+		<section class="grid-3 mobile-hidden">
+			<div class="grid-12 sidebar-title-dark">
+				Panel Logowania
+			</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CoverPath)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PremiereDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+			<div class="grid-12 sidebar-panel-login">
+				<input type="text" name="username" placeholder="Twój login..." class="login">
+				<input type="password" name="password" placeholder="Twoje hasło..." class="login">
+				<input type="submit" value="Zaloguj się" class="login submit">
+				<div class="row"></div>
+				<ul class="sidebar-panel-login">
+					<li><a href="#">Zarejestruj się.</a></li>
+					<li><a href="#">Przypomnij mi hasło.</a></li>
+					<li><a href="#">Przejdź do strony logowania.</a></li>
+				</ul>
+			</div>
 
-</table>
+			<div class="grid-12 sidebar-title-light">
+				Panel Użytkownika
+			</div>
+
+			<div class="grid-12 sidebar-panel-user">
+				<div class="user-info">
+					<img src="~/img/user/noav.png" class="avatar rounded">
+					<div class="user-info-usr">LoginUsera112</div>
+					<div class="user-info-usr"><a href="#">Edytuj swój profil</a></div>
+				</div>
+				<ul class="sidebar-panel-user">
+					<li><a href="#">Zobacz listę życzeń</a></li>
+					<li><a href="#">Zobacz listę gier ignorowanych</a></li>
+					<li style="margin-bottom: .9em;"><a href="#">Zobacz listę gier ocenionych</a></li>
+					<li><a href="admin">Panel administratora</a></li>
+					<li style="margin-bottom: .9em;"><a href="#">Panel redaktora</a></li>
+					<li><a href="#">Wyloguj</a></li>
+				</ul>
+			</div>
+
+		</section>
+	</main>
+	<div class="row" style="margin-bottom: 40px;"></div>
+	<footer class="footer-bar full-width">
+		<div class="row no-margin">
+			<div class="grid-12">
+				<span class="copyright">Copyright by Filip and Pawel
+			</div>
+		</div>
+		</div>
+	</footer>
+	<script src="~/Scripts/respond.min.js"></script>
+	<script>
+    $(function() {
+    //Add class .js to the body if JS is enabled
+    $("body").addClass("js");
+    //Set up the click behavior
+    $(".menu-link").click(function() {
+        //Toggle the class .active on the hamburger icon
+        $(this).toggleClass("active");
+       //Toggle the class .active on the menu to make it slide down/up
+        $(".menu").toggleClass("active");
+    });
+    });
+	</script>
+</body>
+</html>
