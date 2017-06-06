@@ -53,7 +53,12 @@ namespace VideoGamesEncyclopedia.Controllers
                 var wishlistedProduct = database.wishedproducts.FirstOrDefault(wp => wp.ProductId == id);
                 if(wishlistedProduct == null)
                 {
-                    var lastId = database.wishedproducts.OrderByDescending(x => x.Id).First().Id;
+                    int lastId = -1;
+                    var recordWithLastId = database.wishedproducts.OrderByDescending(x => x.Id).FirstOrDefault();
+                    if(recordWithLastId != null)
+                    {
+                        lastId = recordWithLastId.Id;
+                    }
                     var newWishlistedProduct = new wishedproduct(lastId + 1, User.Identity.GetUserId(), id);
                     database.wishedproducts.Add(newWishlistedProduct);
                     database.SaveChanges();
@@ -72,7 +77,12 @@ namespace VideoGamesEncyclopedia.Controllers
                 var ignoredProduct = database.ignoredproducts.FirstOrDefault(wp => wp.ProductId == id);
                 if (ignoredProduct == null)
                 {
-                    var lastId = database.wishedproducts.OrderByDescending(x => x.Id).First().Id;
+                    int lastId = -1;
+                    var recordWithLastId = database.ignoredproducts.OrderByDescending(x => x.Id).FirstOrDefault();
+                    if (recordWithLastId != null)
+                    {
+                        lastId = recordWithLastId.Id;
+                    }
                     var newIgnoredProduct = new ignoredproduct(lastId + 1, User.Identity.GetUserId(), id);
                     database.ignoredproducts.Add(newIgnoredProduct);
                     database.SaveChanges();

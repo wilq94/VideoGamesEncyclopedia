@@ -10,10 +10,24 @@
 namespace VideoGamesEncyclopedia.Models
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class recommendation
     {
+        public recommendation(int newRecommendationId, string v1, int productId, int rate, bool v2, DateTime now)
+        {
+            Id = newRecommendationId;
+            UserId = v1;
+            ProductId = productId;
+            RecommendationRating = rate;
+            WasPresented = v2;
+            GenerationDate = now;
+        }
+
+        public recommendation()
+        {
+
+        }
+
         public int Id { get; set; }
         public string UserId { get; set; }
         public int ProductId { get; set; }

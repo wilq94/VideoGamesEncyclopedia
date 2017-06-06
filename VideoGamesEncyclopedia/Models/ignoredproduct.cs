@@ -22,6 +22,11 @@ namespace VideoGamesEncyclopedia.Models
             ProductId = productId;
         }
 
+        public ignoredproduct()
+        {
+
+        }
+
         public int Id { get; set; }
         public string UserId { get; set; }
         public int ProductId { get; set; }
