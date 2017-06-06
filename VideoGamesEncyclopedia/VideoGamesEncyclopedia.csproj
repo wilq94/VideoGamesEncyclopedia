@@ -503,6 +503,7 @@
     <Compile Include="Controllers\RecommendationController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\UserPanelController.cs" />
+    <Compile Include="Models\UsersWithRoles.cs" />
     <Compile Include="Controllers\WishedProductController.cs" />
     <Compile Include="DAL\VideoGamesEncyclopediaDbContext.cs" />
     <Compile Include="Extensions\RolesExtensions.cs" />

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model VideoGamesEncyclopedia.Models.AdminPanelViewModels.SiteStatisticsViewModel
+
+@{
     Layout = "";
 }
 
@@ -28,25 +30,24 @@
 	<div class="flakes-frame">
 
 		<div class="flakes-navigation">
-			<a href="Index.html" class="logo">
+			<a href="@Url.Action("Index", "AdminPanel")" class="logo">
 				Encyklopedia
 			</a>
 
 			<p class="foot">
 				Witaj, <b>Administratorze</b><br>
-				<a href="">Moje konto</a> &bullet; <a href="">Wyloguj</a>
+                <a href="@Url.Action("Index", "Manage")">Moje konto</a> &bullet;
+                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
 			</p>
 
             <ul>
                 <li class="title">Akcje administratora</li>
-                <li><a href="Users.html">Użytkownicy</a></li>
-                <li><a href="Games.html">Baza gier</a></li>
-                <li><a href="Categories.html">Baza tagów</a></li>
-                <li><a href="Tickets.html">Zgłoszenia</a></li>
-                <li><a href="Settings.html">Ustawienia strony</a></li>
+                <li><a href="@Url.Action("Users", "AdminPanel")">Użytkownicy</a></li>
+                <li><a href="@Url.Action("Games", "AdminPanel")">Baza gier</a></li>
+                <li><a href="@Url.Action("Categories", "AdminPanel")">Baza tagów</a></li>
+                <li><a href="@Url.Action("Tickets", "AdminPanel")">Zgłoszenia</a></li>
+                <li><a href="@Url.Action("Settings", "AdminPanel")">Ustawienia strony</a></li>
             </ul>
-
-
 		</div>
 
 		<div class="flakes-content">
@@ -77,23 +78,19 @@
 							<legend>Statystyki strony</legend>
 							<dl>
 								<dt>Strona powstała</dt>
-								<dd>17.05.2017</dd>
+								<dd>@Model.CreationDate</dd>
 							</dl>
 							<dl>
 								<dt>Zarejestrowanych użytkowników</dt>
-								<dd>542</dd>
-							</dl>
-							<dl>
-								<dt>Wizyt dzisiaj</dt>
-								<dd>43321</dd>
+								<dd>@Model.RegisteredUsers </ dd >
 							</dl>
 							<dl>
 								<dt>Gier w bazie danych</dt>
-								<dd>1332</dd>
+								<dd>@Model.GamesCounter </ dd >
 							</dl>
 							<dl>
 								<dt>Nierozwiązanych zgłoszeń</dt>
-								<dd>12</dd>
+								<dd>@Model.UnsolvedTickets </ dd >
 							</dl>
 						</fieldset>
 					</div>

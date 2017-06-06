@@ -1,7 +1,133 @@
-﻿
+﻿@model VideoGamesEncyclopedia.Models.AdminPanelViewModels.UsersViewModel
+
 @{
-    ViewBag.Title = "Users";
+    Layout = "";
 }
 
-<h2>Users</h2>
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
 
+<head>
+    <title>Panel Administratora</title>
+
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/css/all.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+        <p class="chromeframe" style="background:#eee; padding:10px; width:100%">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p>
+    <![endif]-->
+
+    <div class="flakes-frame">
+
+        <div class="flakes-navigation">
+            <a href="@Url.Action("Index", "AdminPanel")" class="logo">
+                Encyklopedia
+            </a>
+
+            <p class="foot">
+                Witaj, <b>Administratorze</b><br>
+                <a href="@Url.Action("Index", "Manage")">Moje konto</a> &bullet;
+                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+            </p>
+
+            <ul>
+                <li class="title">Akcje administratora</li>
+                <li><a href="@Url.Action("Users", "AdminPanel")">Użytkownicy</a></li>
+                <li><a href="@Url.Action("Games", "AdminPanel")">Baza gier</a></li>
+                <li><a href="@Url.Action("Categories", "AdminPanel")">Baza tagów</a></li>
+                <li><a href="@Url.Action("Tickets", "AdminPanel")">Zgłoszenia</a></li>
+                <li><a href="@Url.Action("Settings", "AdminPanel")">Ustawienia strony</a></li>
+            </ul>
+        </div>
+
+        <div class="flakes-content">
+
+            <div class="flakes-mobile-top-bar">
+                <a href="" class="logo-wrap">
+                    <img src="~/Content/admin/img/logo.png" height="30">
+                </a>
+
+                <a href="" class="navigation-expand-target">
+                    <img src="~/Content/admin/img/site-wide/navigation-expand-target.png" height="26">
+                </a>
+            </div>
+
+            <div class="view-wrap">
+                <h1>Użytkownicy</h1>
+
+                <br>
+
+                <div class="grid-1 gutter-40">
+
+                    <div class="span-1">
+                        <div class="flakes-search">
+                            <input class="search-box" placeholder="Szukaj" autofocus>
+                            <div class="filters">
+                                <label class="filter-checkbox">
+                                    <input class="checkbox" type="checkbox"> Nieaktywne
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input class="checkbox" type="checkbox"> Aktywne
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flakes-actions-bar">
+                            <a class="action button-gray smaller" href="">Usuń</a>
+                            <a class="action button-gray smaller" href="">Edytuj</a>
+                        </div>
+                        <table class="flakes-table" style="width:100%">
+                            <colgroup>
+                                <col span="1" style="width:20px" />
+                                <col span="1" style="width:80%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <th>Adres email</th>
+                                    <th>Nazwa użytkownika</th>
+                                    <th>Rola</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.UserList)
+                                {
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td>@Html.DisplayFor(modelItem => item.EmailAddress)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Role)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/bower_components/gridforms/gridforms/gridforms.css">
+
+    <script src="~/Content/admin/bower_components/jquery/dist/jquery.js"></script>
+    <script src="~/Content/admin/bower_components/snapjs/snap.js"></script>
+    <script src="~/Content/admin/bower_components/responsive-elements/responsive-elements.js"></script>
+    <script src="~/Content/admin/bower_components/gridforms/gridforms/gridforms.js"></script>
+
+    <script src="~/Content/admin/js/base.js"></script>
+</body>
+</html>

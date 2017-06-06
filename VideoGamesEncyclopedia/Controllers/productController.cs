@@ -66,7 +66,20 @@ namespace VideoGamesEncyclopedia.Controllers
 
         public ActionResult AddToIgnoredList(int id)
         {
-            //TODO
+            using (VideoGamesEncyclopediaDbEntities database = new VideoGamesEncyclopediaDbEntities())
+            {
+                //zrobic jakies warunki, zeby nie bylo na liscie zyczen, w ocenionych i ignorowanych jednoczesnie
+                var ignoredProduct = database.ignoredproducts.FirstOrDefault(wp => wp.ProductId == id);
+                if (ignoredProduct == null)
+                {
+                    var lastId = database.wishedproducts.OrderByDescending(x => x.Id).First().Id;
+                    var newIgnoredProduct = new ignoredproduct(lastId + 1, User.Identity.GetUserId(), id);
+                    database.ignoredproducts.Add(newIgnoredProduct);
+                    database.SaveChanges();
+                }
+
+            }
+
 
             return RedirectToAction("Gamecard/" + id);
         }

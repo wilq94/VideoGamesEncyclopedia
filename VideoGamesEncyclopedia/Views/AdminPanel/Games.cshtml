@@ -29,27 +29,26 @@
 
 	<div class="flakes-frame">
 
-		<div class="flakes-navigation">
-			<a href="Index.html" class="logo">
-				Encyklopedia
-			</a>
+        <div class="flakes-navigation">
+            <a href="@Url.Action("Index", "AdminPanel")" class="logo">
+                Encyklopedia
+            </a>
 
-			<p class="foot">
-				Witaj, <b>Administratorze</b><br>
-				<a href="">Moje konto</a> &bullet; <a href="">Wyloguj</a>
-			</p>
+            <p class="foot">
+                Witaj, <b>Administratorze</b><br>
+                <a href="@Url.Action("Index", "Manage")">Moje konto</a> &bullet;
+                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+            </p>
 
-			<ul>
-				<li class="title">Akcje administratora</li>
-				<li><a href="Users.html">Użytkownicy</a></li>
-				<li><a href="Games.html">Baza gier</a></li>
-				<li><a href="Categories.html">Baza tagów</a></li>
-				<li><a href="Tickets.html">Zgłoszenia</a></li>
-				<li><a href="Settings.html">Ustawienia strony</a></li>
-			</ul>
-
-
-		</div>
+            <ul>
+                <li class="title">Akcje administratora</li>
+                <li><a href="@Url.Action("Users", "AdminPanel")">Użytkownicy</a></li>
+                <li><a href="@Url.Action("Games", "AdminPanel")">Baza gier</a></li>
+                <li><a href="@Url.Action("Categories", "AdminPanel")">Baza tagów</a></li>
+                <li><a href="@Url.Action("Tickets", "AdminPanel")">Zgłoszenia</a></li>
+                <li><a href="@Url.Action("Settings", "AdminPanel")">Ustawienia strony</a></li>
+            </ul>
+        </div>
 
 		<div class="flakes-content">
 

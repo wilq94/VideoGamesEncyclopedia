@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using System.IO;
 using System.Web;
 using System.Data;
+using static VideoGamesEncyclopedia.Models.AdminPanelViewModels;
+using System.Collections.Generic;
 
 namespace VideoGamesEncyclopedia.Controllers
 {
@@ -19,7 +21,12 @@ namespace VideoGamesEncyclopedia.Controllers
         {
             if (isAdmin() || isPublisher())
             {
-                return View();
+                var usersCounter = db.aspnetusers.Count();
+                var gamesCounter = db.products.Count();
+                var ticketsCounter = db.tickets.Where(t => t.IsFinished == 0).Count();
+                SiteStatisticsViewModel indexViewModel = new SiteStatisticsViewModel("17.05.2017", usersCounter, gamesCounter, ticketsCounter);
+
+                return View(indexViewModel);
             }
             else
             {
@@ -28,7 +35,14 @@ namespace VideoGamesEncyclopedia.Controllers
         }
         public ActionResult AddGame()
         {
-            return View();
+            if (isAdmin() || isPublisher())
+            {
+                return View();
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         //Name=&CreatedBy=&PremiereDate=&Description=&file=
@@ -96,11 +110,38 @@ namespace VideoGamesEncyclopedia.Controllers
             }
         }
 
+        public List<UsersWithRoles> GetUsersWithRoles()
+        {
+            var userList = new List<UsersWithRoles>();
+            foreach(var user in db.aspnetusers)
+            {
+                string role = "User";
+                var UserManager = new UserManager<ApplicationUser>(new MySqlUserStore<ApplicationUser>("DefaultConnection"));
+                var s = UserManager.GetRoles(user.Id);
+                if(s.Count > 0)
+                { 
+                    if (s[0].ToString() == "Admin")
+                    {
+                        role = "Admin";
+                    }
+                    if (s[0].ToString() == "Publisher")
+                    {
+                        role = "Publisher";
+                    }
+                }
+                var userWithRole = new UsersWithRoles (user.Email, user.UserName, role);
+                userList.Add(userWithRole);
+            }
+            return userList;
+        }
+
         public ActionResult Users()
         {
             if (isAdmin())
             {
-                return View();
+                UsersViewModel usersViewModel = new UsersViewModel(GetUsersWithRoles());
+
+                return View(usersViewModel);
             }
             else
             {

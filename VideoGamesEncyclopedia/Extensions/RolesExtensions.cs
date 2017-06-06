@@ -13,7 +13,7 @@ namespace VideoGamesEncyclopedia.Extensions
     {
         public static string GetRoleName(string name)
         {
-            string roleName = "";
+            string roleName = "User";
             using (VideoGamesEncyclopediaDbEntities db = new VideoGamesEncyclopediaDbEntities())
             {
                 var userId = db.aspnetusers.FirstOrDefault(u => u.UserName == name).Id;
