@@ -25,6 +25,13 @@ namespace VideoGamesEncyclopedia.Models
 
         }
 
+        public wishedproduct(int id, string userId, int productId)
+        {
+            Id = id;
+            UserId = userId;
+            ProductId = productId;
+        }
+
         public int Id { get; set; }
         public string UserId { get; set; }
         public int ProductId { get; set; }

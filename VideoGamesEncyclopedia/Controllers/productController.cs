@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using VideoGamesEncyclopedia.Models;
 
@@ -46,6 +44,31 @@ namespace VideoGamesEncyclopedia.Controllers
                 return HttpNotFound();
             }
             return View(product);
+        }
+
+        public ActionResult AddToWishlist(int id)
+        {
+            using (VideoGamesEncyclopediaDbEntities database = new VideoGamesEncyclopediaDbEntities())
+            {
+                var wishlistedProduct = database.wishedproducts.FirstOrDefault(wp => wp.ProductId == id);
+                if(wishlistedProduct == null)
+                {
+                    var lastId = database.wishedproducts.OrderByDescending(x => x.Id).First().Id;
+                    var newWishlistedProduct = new wishedproduct(lastId + 1, User.Identity.GetUserId(), id);
+                    database.wishedproducts.Add(newWishlistedProduct);
+                    database.SaveChanges();
+                }
+                
+            }
+
+            return RedirectToAction("Gamecard/" + id);
+        }
+
+        public ActionResult AddToIgnoredList(int id)
+        {
+            //TODO
+
+            return RedirectToAction("Gamecard/" + id);
         }
 
         // GET: product/Create

@@ -102,7 +102,6 @@ namespace VideoGamesEncyclopedia.Controllers
 
                         string new_print_url = myResp.ResponseUri.ToString();
 
-
                         HtmlDocument document = webGet.Load(new_print_url);
 
                         var gameNodes = document.DocumentNode.SelectNodes("//*[@class='ellipsis']");
@@ -128,9 +127,7 @@ namespace VideoGamesEncyclopedia.Controllers
                     {
 
                     }
-                }
-
-                
+                }  
             }
             return RedirectToAction("WishList", "UserPanel");
         }

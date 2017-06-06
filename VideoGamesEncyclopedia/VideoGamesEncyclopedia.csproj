@@ -505,6 +505,7 @@
     <Compile Include="Controllers\UserPanelController.cs" />
     <Compile Include="Controllers\WishedProductController.cs" />
     <Compile Include="DAL\VideoGamesEncyclopediaDbContext.cs" />
+    <Compile Include="Extensions\RolesExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
