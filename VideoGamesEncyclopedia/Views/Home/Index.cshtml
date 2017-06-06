@@ -80,7 +80,8 @@
                                 </a>
                             </div>
                             <div class="grid-10">
-                                <div class="grid-12 last-added-title">@item.Title</div>
+
+                                <div class="grid-12 last-added-title"><a href='@Url.Action("Gamecard/"+item.ProductId, "product")'>@item.Title</a></div>
                                 <div class="grid-12 last-added-desc">@item.Descritpion</div>
                             </div>
                         </div>
@@ -101,7 +102,7 @@
                                     <img src="~/img/covers/@item.ImageUrl">
                                 </a>
                             </div>
-                            <div class="grid-12 best-rated-title">@item.Title</div>
+                            <div class="grid-12 best-rated-title"><a href='@Url.Action("Gamecard/"+item.ProductId, "product")'>@item.Title</a></div>
                             <div class="grid-12 best-rated-rating"><img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/star-24.png"> @item.Rating</div>
                         </div>
                     }
