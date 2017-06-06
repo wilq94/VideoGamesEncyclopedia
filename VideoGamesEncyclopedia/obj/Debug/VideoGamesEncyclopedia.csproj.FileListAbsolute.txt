@@ -175,3 +175,6 @@ C:\Users\wilq\Documents\Visual Studio 2015\Projects\VideoGamesEncyclopedia\Video
 C:\Users\wilq\Documents\Visual Studio 2015\Projects\VideoGamesEncyclopedia\VideoGamesEncyclopedia\bin\MySql.AspNet.Identity.dll
 C:\Users\wilq\Documents\Visual Studio 2015\Projects\VideoGamesEncyclopedia\VideoGamesEncyclopedia\bin\MySql.AspNet.Identity.pdb
 C:\Users\wilq\Documents\Visual Studio 2015\Projects\VideoGamesEncyclopedia\VideoGamesEncyclopedia\obj\Debug\VideoGamesEncyclopedia.csprojResolveAssemblyReference.cache
+C:\Users\wilq\Documents\Visual Studio 2015\Projects\VideoGamesEncyclopedia\VideoGamesEncyclopedia\bin\HtmlAgilityPack.dll
+C:\Users\wilq\Documents\Visual Studio 2015\Projects\VideoGamesEncyclopedia\VideoGamesEncyclopedia\bin\HtmlAgilityPack.pdb
+C:\Users\wilq\Documents\Visual Studio 2015\Projects\VideoGamesEncyclopedia\VideoGamesEncyclopedia\bin\HtmlAgilityPack.xml

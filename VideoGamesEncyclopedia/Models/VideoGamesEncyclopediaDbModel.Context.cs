@@ -10,9 +10,10 @@
 namespace VideoGamesEncyclopedia.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class VideoGamesEncyclopediaDbEntities : DbContext
     {
         public VideoGamesEncyclopediaDbEntities()
@@ -22,7 +23,8 @@ namespace VideoGamesEncyclopedia.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<product>().Property(r => r.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }
     
         public virtual DbSet<aspnetrole> aspnetroles { get; set; }

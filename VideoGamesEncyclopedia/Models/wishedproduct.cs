@@ -14,6 +14,17 @@ namespace VideoGamesEncyclopedia.Models
     
     public partial class wishedproduct
     {
+        public wishedproduct(string userId, int productId)
+        {
+            UserId = userId;
+            ProductId = productId;
+        }
+
+        public wishedproduct()
+        {
+
+        }
+
         public int Id { get; set; }
         public string UserId { get; set; }
         public int ProductId { get; set; }

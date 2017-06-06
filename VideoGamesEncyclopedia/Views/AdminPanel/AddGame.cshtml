@@ -1,4 +1,6 @@
-﻿@{
+﻿@model VideoGamesEncyclopedia.Models.product
+
+@{
     Layout = "";
 }
 
@@ -37,14 +39,14 @@
 				<a href="">Moje konto</a> &bullet; <a href="">Wyloguj</a>
 			</p>
 
-			<ul>
-				<li class="title">Akcje administratora</li>
-				<li><a href="#">Użytkownicy</a></li>
-				<li><a href="games.html">Baza gier</a></li>
-				<li><a href="#">Baza tagów</a></li>
-				<li><a href="#">Zgłoszenia</a></li>
-				<li><a href="#">Ustawienia strony</a></li>
-			</ul>
+            <ul>
+                <li class="title">Akcje administratora</li>
+                <li><a href="Users.html">Użytkownicy</a></li>
+                <li><a href="Games.html">Baza gier</a></li>
+                <li><a href="Categories.html">Baza tagów</a></li>
+                <li><a href="Tickets.html">Zgłoszenia</a></li>
+                <li><a href="Settings.html">Ustawienia strony</a></li>
+            </ul>
 
 
 		</div>
@@ -75,39 +77,64 @@
 					<div class="span-1">
 						<fieldset>
 							<legend>Dodaj nową grę</legend>
-							<form>
-								<ul>
-									<li>
-										<label>Nazwa gry</label>
-										<input type="text">
-									</li>
-									<li>
-										<label>Twórcy gry</label>
-										<input type="text">
-									</li>
-									<li>
-										<label>Data premiery</label>
-										<input type="date" required>
-									</li>
-									<li>
-										<label>Opis gry</label>
-										<textarea></textarea>
-									</li>
-									<li>
-										<label>Okładka gry</label>
-										<input type="file">
-									</li>
-									<li>
-										<label>Zrzuty ekranu</label>
-										<input type="file">
-										<input type="file">
-										<input type="file">
-									</li>
-									<li>
-										<input type="submit">
-									</li>
-								</ul>
-							</form>
+							@using (Html.BeginForm("AddGame", "AdminPanel", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <ul>
+
+
+                                    <li>
+
+                                        <label>Nazwa gry</label>
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </li>
+
+                                    <li>
+
+                                        <label>Twórcy gry</label>
+                                        @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+                                    </li>
+
+                                    <li>
+
+                                        <label>Data premiery</label>
+                                        @Html.EditorFor(model => model.PremiereDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PremiereDate, "", new { @class = "text-danger" })
+                                    </li>
+
+                                    <li>
+
+                                        <label>Opis gry</label>
+                                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </li>
+
+                                    <li>
+                                            <label for="file">Okładka gry</label>
+                                            <input type="file" name="coverFile" id="coverFile" style="width: 100%;" />
+
+                                    </li>
+
+                                    <li>
+
+                                        <label>Zrzuty ekranu</label>
+                                            <input type="file" name="screenFile" id="screenFile" style="width: 100%;" />
+                                            <input type="file" name="screenFile2" id="screenFile2" style="width: 100%;" />
+                                            <input type="file" name="screenFile3" id="screenFile3" style="width: 100%;" />
+
+                                    </li>
+
+                                    <li>
+
+                                        <input type="submit">
+
+                                    </li>
+
+                                </ul>
+                            }
 						</fieldset>
 					</div>
 				</div>
