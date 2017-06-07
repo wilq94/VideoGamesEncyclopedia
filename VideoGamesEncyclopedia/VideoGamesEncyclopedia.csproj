@@ -553,7 +553,6 @@
       <DependentUpon>VideoGamesEncyclopediaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TopRatedViewModel.cs" />
-    <Compile Include="Models\UserPanelViewModels.cs" />
     <Compile Include="Models\VideoGamesEncyclopediaDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

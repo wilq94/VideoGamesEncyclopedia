@@ -27,6 +27,10 @@ namespace VideoGamesEncyclopedia.Controllers
             {
                 products = products.OrderByDescending(x => x.Rating);
             }
+            if (sortOrder == "alpha")
+            {
+                products = products.OrderByDescending(x => x.Name);
+            }
 
             return View(products.ToList());
         }

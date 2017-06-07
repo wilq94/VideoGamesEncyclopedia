@@ -3,17 +3,17 @@ using MySql.AspNet.Identity;
 using System;
 using System.Web.Mvc;
 using VideoGamesEncyclopedia.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Linq;
-using System.Collections.Generic;
 using HtmlAgilityPack;
+using System.Data.Entity;
 
 namespace VideoGamesEncyclopedia.Controllers
 {
     public class UserPanelController : Controller
     {
+
+
         // GET: UserPanel
         public ActionResult Index()
         {
@@ -30,7 +30,12 @@ namespace VideoGamesEncyclopedia.Controllers
         {
             if (IsUser())
             {
-                return View();
+                using (var db = new VideoGamesEncyclopediaDbEntities())
+                {
+                    string x = User.Identity.GetUserId();
+                    var wishedproducts = db.wishedproducts.Where(w => w.UserId == x).Include(w => w.product);
+                    return View(wishedproducts.ToList());
+                }
             }
             else
             {
@@ -38,11 +43,38 @@ namespace VideoGamesEncyclopedia.Controllers
             }
         }
 
+        public ActionResult DeleteFromWishlist(int? id)
+        {
+            using (var db = new VideoGamesEncyclopediaDbEntities())
+            {
+                wishedproduct ignoredproduct = db.wishedproducts.Find(id);
+                db.wishedproducts.Remove(ignoredproduct);
+                db.SaveChanges();
+            }
+            return RedirectToAction("WishList", "UserPanel");
+        }
+
+        public ActionResult DeleteFromIgnoredList(int? id)
+        {
+            using (var db = new VideoGamesEncyclopediaDbEntities())
+            { 
+                ignoredproduct ignoredproduct = db.ignoredproducts.Find(id);
+                db.ignoredproducts.Remove(ignoredproduct);
+                db.SaveChanges();
+            }
+            return RedirectToAction("IgnoredList", "UserPanel");
+        }
+
         public ActionResult IgnoredList()
         {
             if (IsUser())
             {
-                return View();
+                using (var db = new VideoGamesEncyclopediaDbEntities())
+                {
+                    string x = User.Identity.GetUserId();
+                    var wishedproducts = db.ignoredproducts.Where(w => w.UserId == x).Include(w => w.product);
+                    return View(wishedproducts.ToList());
+                }
             }
             else
             {
@@ -54,7 +86,12 @@ namespace VideoGamesEncyclopedia.Controllers
         {
             if (IsUser())
             {
-                return View();
+                using (var db = new VideoGamesEncyclopediaDbEntities())
+                {
+                    string x = User.Identity.GetUserId();
+                    var wishedproducts = db.ratings.Where(w => w.UserId == x).Include(w => w.product);
+                    return View(wishedproducts.ToList());
+                }
             }
             else
             {
