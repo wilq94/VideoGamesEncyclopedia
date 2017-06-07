@@ -59,7 +59,7 @@ html { font-size: 62.5%; }
 
 body { background: #f1f1e7; font-family: Segoe UI, Verdana; margin: 0; padding: 0; }
 
-.top-bar { background: #000d2c; }
+.top-bar { background: #000d2c; max-height: 17em;}
 
 .menu-link { float: right; margin: -6px 1% 5px 0; padding: 1.5em 1em 1em; background: #f6f6f6; line-height: 0; text-decoration: none; color: #333; border-radius: 2px; cursor: pointer; }
 
@@ -77,6 +77,11 @@ body { background: #f1f1e7; font-family: Segoe UI, Verdana; margin: 0; padding: 
 
 .menu, .foot-menu { padding: 0; clear: both; transition: all .3s ease-out; }
 
+.foot-menu {
+	margin-top: 3rem;
+
+}
+
 .menu.active, .foot-menu.active { max-height: 17em; }
 
 .menu ul, .foot-menu ul { margin: 0; padding: 0; list-style-type: none; border: 1px #3c5695 dotted; border-bottom: none; text-align: center; background: #000d2c; }
@@ -93,6 +98,17 @@ body { background: #f1f1e7; font-family: Segoe UI, Verdana; margin: 0; padding: 
 
 .foot-menu ul { border-left: 0px solid; border-right: 0px solid; }
 
+.foot-menu li a{
+	color: #222;
+	padding: 11px;
+	line-height: 20px;
+	border-bottom: 3px solid #000d2c;
+}
+
+	.foot-menu li a:hover {
+		color: #fff;
+	}
+
 @media (min-width: 42.5em) { .foot-menu ul { float: left; } }
 
 .cover { height: 15rem; text-align: center;  }
@@ -101,7 +117,12 @@ body { background: #f1f1e7; font-family: Segoe UI, Verdana; margin: 0; padding: 
 
 .cover img { max-width: 100%; max-height: 100%; border: 1px solid #000d2c; }
 
-.search-bar { background: #3c5695; height: 4rem; padding: 0 2%; }
+.logoimg img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.search-bar { background: #3c5695; height: 4rem; padding: 0 2%; border: 0px solid; border-radius: 15px;}
 
 .search-bar .main-search { background: transparent; border: 0; height: inherit; color: #fff; font-style: italic; width: inherit; }
 
@@ -211,9 +232,9 @@ body { background: #f1f1e7; font-family: Segoe UI, Verdana; margin: 0; padding: 
 
 .center-text { text-align: center; }
 
-.footer-bar { background: #d9d9d5; height: 15rem; text-align: center; }
+.footer-bar { background: #d9d9d5; height: 10rem; text-align: center; }
 
-.copyright { color: #222; line-height: 15rem; }
+.copyright { color: #222; line-height: 10rem;}
 
 .chosen-game-title { background: #00174e; text-align: center; padding: 1.6rem 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem; }
 
