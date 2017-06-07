@@ -14,6 +14,18 @@ namespace VideoGamesEncyclopedia.Models
     
     public partial class productcategory
     {
+        public productcategory(int lastId, int gameId, int categoryId)
+        {
+            Id = lastId;
+            ProductId = gameId;
+            CategoryId = categoryId;
+        }
+
+        public productcategory()
+        {
+
+        }
+
         public int Id { get; set; }
         public Nullable<int> ProductId { get; set; }
         public Nullable<int> CategoryId { get; set; }

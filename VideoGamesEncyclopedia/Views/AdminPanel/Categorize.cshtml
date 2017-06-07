@@ -1,4 +1,4 @@
-﻿@model VideoGamesEncyclopedia.Models.AdminPanelViewModels.UsersViewModel
+﻿@model VideoGamesEncyclopedia.Models.AdminPanelViewModels.CategoriesListViewModel
 
 @{
     Layout = "";
@@ -48,7 +48,7 @@
                 <li><a href="@Url.Action("Games", "AdminPanel")">Baza gier</a></li>
                 <li><a href="@Url.Action("Categories", "AdminPanel")">Baza tagów</a></li>
                 <li><a href="@Url.Action("Tickets", "AdminPanel")">Zgłoszenia</a></li>
-                <li><a href="@Url.Action("Statistics", "AdminPanel")">Statystyki strony</a></li>
+                <li><a href="@Url.Action("Settings", "AdminPanel")">Ustawienia strony</a></li>
             </ul>
         </div>
 
@@ -65,7 +65,7 @@
             </div>
 
             <div class="view-wrap">
-                <h1>Użytkownicy</h1>
+                <h1>Baza gier</h1>
 
                 <br>
 
@@ -73,15 +73,11 @@
 
                     <div class="span-1">
                         <div class="flakes-search">
-                            <div class="flakes-search">
-                                @using (Html.BeginForm("Users", "AdminPanel", FormMethod.Get))
-                                {
-                                    @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { placeholder = "Szukaj...", @class = "search-box" })
-                                    <input hidden type="submit" value="Search" />
-                                }
-                            </div>
-                        </div>
-                        <div class="flakes-actions-bar">
+                            @using (Html.BeginForm("Categorize", "AdminPanel", FormMethod.Get))
+                            {
+                                @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { placeholder = "Szukaj...", @class = "search-box" })
+                                <input hidden type="submit" value="Search" />
+                            }
                         </div>
                         <table class="flakes-table" style="width:100%">
                             <colgroup>
@@ -90,20 +86,32 @@
                             </colgroup>
                             <thead>
                                 <tr>
-                                    <th>Adres email</th>
-                                    <th>Nazwa użytkownika</th>
-                                    <th>Rola</th>
+                                    <th>Nazwa kategorii</th>
+                                    <th>Operacja</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model.UserList)
+                                @foreach (var item in Model.CategoryList)
                                 {
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.EmailAddress)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Role)</td>
-                                        <td><a class="action button-gray smaller" onclick="location.href='@Url.Action("EditUser","AdminPanel", new { id = item.UserName })'">Edytuj</a></td>
-                                        <td><a class="action button-gray smaller" onclick="location.href='@Url.Action("DeleteUser","AdminPanel", new { id = item.UserName })'">Usuń</a></td>
+                                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+<td>
+    @if (Model.ProductCategoryList.Count > 0)
+    {
+        if (Model.ProductCategoryList.Any(i => i.CategoryId == item.Id))
+        {
+            <a class="action button-gray smaller" onclick="location.href='@Url.Action("RemoveCategory","AdminPanel", new { RecordId = Model.ProductCategoryList.Where(i => i.CategoryId == item.Id).FirstOrDefault().Id, GameId = Model.ProductCategoryList.FirstOrDefault().ProductId })'">Usuń</a>
+        }
+        else
+        {
+            <a class="action button-gray smaller" onclick="location.href='@Url.Action("AddCategory","AdminPanel", new { GameId = Model.ProductCategoryList.FirstOrDefault().ProductId, CategoryId = item.Id })'">Dodaj</a>
+        }
+    }
+    else
+    {
+        <a class="action button-gray smaller" onclick="location.href='@Url.Action("AddCategory","AdminPanel", new { GameId = ViewBag.MyId, CategoryId = item.Id })'">Dodaj</a>
+    }
+                                        </td>
                                     </tr>
                                 }
                             </tbody>

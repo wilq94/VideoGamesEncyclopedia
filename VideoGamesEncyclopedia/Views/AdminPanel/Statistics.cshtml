@@ -1,4 +1,4 @@
-﻿@model VideoGamesEncyclopedia.Models.AdminPanelViewModels.UsersViewModel
+﻿@model VideoGamesEncyclopedia.Models.AdminPanelViewModels.SiteStatisticsViewModel
 
 @{
     Layout = "";
@@ -32,7 +32,7 @@
     <div class="flakes-frame">
 
         <div class="flakes-navigation">
-            <a href="@Url.Action("Index", "AdminPanel")" class="logo">
+            <a href="@Url.Action("Index", "Home")" class="logo">
                 Encyklopedia
             </a>
 
@@ -65,49 +65,30 @@
             </div>
 
             <div class="view-wrap">
-                <h1>Użytkownicy</h1>
+                <h1>Statystyki</h1>
 
                 <br>
 
                 <div class="grid-1 gutter-40">
-
                     <div class="span-1">
-                        <div class="flakes-search">
-                            <div class="flakes-search">
-                                @using (Html.BeginForm("Users", "AdminPanel", FormMethod.Get))
-                                {
-                                    @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { placeholder = "Szukaj...", @class = "search-box" })
-                                    <input hidden type="submit" value="Search" />
-                                }
-                            </div>
-                        </div>
-                        <div class="flakes-actions-bar">
-                        </div>
-                        <table class="flakes-table" style="width:100%">
-                            <colgroup>
-                                <col span="1" style="width:20px" />
-                                <col span="1" style="width:80%" />
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>Adres email</th>
-                                    <th>Nazwa użytkownika</th>
-                                    <th>Rola</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.UserList)
-                                {
-                                    <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.EmailAddress)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Role)</td>
-                                        <td><a class="action button-gray smaller" onclick="location.href='@Url.Action("EditUser","AdminPanel", new { id = item.UserName })'">Edytuj</a></td>
-                                        <td><a class="action button-gray smaller" onclick="location.href='@Url.Action("DeleteUser","AdminPanel", new { id = item.UserName })'">Usuń</a></td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+                        <fieldset class="flakes-information-box">
+                            <dl>
+                                <dt>Strona powstała</dt>
+                                <dd>@Model.CreationDate</dd>
+                            </dl>
+                            <dl>
+                                <dt>Zarejestrowanych użytkowników</dt>
+                                <dd>@Model.RegisteredUsers </ dd >
+                            </dl>
+                            <dl>
+                                <dt>Gier w bazie danych</dt>
+                                <dd>@Model.GamesCounter </ dd >
+                            </dl>
+                            <dl>
+                                <dt>Nierozwiązanych zgłoszeń</dt>
+                                <dd>@Model.UnsolvedTickets </ dd >
+                            </dl>
+                        </fieldset>
                     </div>
 
                 </div>

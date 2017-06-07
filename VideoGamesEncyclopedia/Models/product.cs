@@ -32,7 +32,8 @@ namespace VideoGamesEncyclopedia.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string CoverPath { get; set; }
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> PremiereDate { get; set; }
         public string CreatedBy { get; set; }
         public string Description { get; set; }

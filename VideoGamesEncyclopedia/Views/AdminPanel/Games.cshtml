@@ -30,7 +30,7 @@
 	<div class="flakes-frame">
 
         <div class="flakes-navigation">
-            <a href="@Url.Action("Index", "AdminPanel")" class="logo">
+            <a href="@Url.Action("Index", "Home")" class="logo">
                 Encyklopedia
             </a>
 
@@ -46,7 +46,7 @@
                 <li><a href="@Url.Action("Games", "AdminPanel")">Baza gier</a></li>
                 <li><a href="@Url.Action("Categories", "AdminPanel")">Baza tagów</a></li>
                 <li><a href="@Url.Action("Tickets", "AdminPanel")">Zgłoszenia</a></li>
-                <li><a href="@Url.Action("Settings", "AdminPanel")">Ustawienia strony</a></li>
+                <li><a href="@Url.Action("Statistics", "AdminPanel")">Statystyki strony</a></li>
             </ul>
         </div>
 
@@ -71,21 +71,14 @@
 
 					<div class="span-1">
 						<div class="flakes-search">
-							<input class="search-box" placeholder="Szukaj" autofocus>
-							<div class="filters">
-								<label class="filter-checkbox">
-									<input class="checkbox" type="checkbox"> Nieaktywne
-								</label>
-								<label class="filter-checkbox">
-									<input class="checkbox" type="checkbox"> Aktywne
-								</label>
-							</div>
+@using (Html.BeginForm("Games", "AdminPanel", FormMethod.Get))
+{
+                                @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { placeholder = "Szukaj...", @class = "search-box" })
+                                <input hidden type="submit" value="Search" />
+}
 						</div>
 						<div class="flakes-actions-bar">
-							<a class="action button-gray smaller right" href="AddGame.html">Dodaj grę</a>
-
-							<a class="action button-gray smaller" href="">Usuń</a>
-							<a class="action button-gray smaller" href="">Edytuj</a>
+							<a class="action button-gray smaller right" href="AddGame">Dodaj grę</a>
 						</div>
 						<table class="flakes-table" style="width:100%">
 							<colgroup>
@@ -94,19 +87,23 @@
 							</colgroup>
 							<thead>
 								<tr>
-								  <th><input type="checkbox"></th>
 									<th>Nazwa gry</th>
 									<th>Data dodania</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
 								</tr>
 							</thead>
 							<tbody>
 @foreach (var item in Model)
 {
 								<tr>
-								  <td><input type="checkbox"></td>
 								  <td>@Html.DisplayFor(modelItem => item.Name)</td>
 								  <td>@Html.DisplayFor(modelItem => item.PremiereDate)</td>
-								</tr>
+                                  <td><a class="action button-gray smaller" onclick="location.href='@Url.Action("Categorize","AdminPanel", new { Id = item.Id })'">Otaguj</a></td>
+                                  <td><a class="action button-gray smaller" onclick="location.href='@Url.Action("EditGame","AdminPanel", new { Id = item.Id })'">Edytuj</a></td>
+                                  <td><a class="action button-gray smaller" onclick="location.href='@Url.Action("DeleteGame","AdminPanel", new { Id = item.Id })'">Usuń</a></td>
+                                </tr>
 }
 							</tbody>
 						</table>

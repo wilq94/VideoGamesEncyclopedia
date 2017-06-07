@@ -23,18 +23,38 @@ namespace VideoGamesEncyclopedia.Models
             public int GamesCounter { get; set; }
             public int UnsolvedTickets { get; set; }
         }
+
+        public enum UserRoles
+        {
+            User,
+            Publisher,
+            Admin
+        }
+
         public class UsersViewModel
         {
             public UsersViewModel(List<UsersWithRoles> userList)
             {
                 UserList = userList;
             }
+
+            public UsersViewModel()
+            {
+            }
+
             public List<UsersWithRoles> UserList { get; set; }
         }
+
         public class CategoriesListViewModel
         {
-            string Name { get; set; }
-            DateTime DateOfAdding { get; set; }
+            public CategoriesListViewModel(List<category> toList, List<productcategory> productCategoryList)
+            {
+                CategoryList = toList;
+                ProductCategoryList = productCategoryList;
+            }
+
+            public List<category> CategoryList { get; set; }
+            public List<productcategory> ProductCategoryList { get; set; }
         }
         public class TicketsViewModel
         {

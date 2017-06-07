@@ -676,7 +676,7 @@
     <Content Include="Views\AdminPanel\Users.cshtml" />
     <Content Include="Views\AdminPanel\Categories.cshtml" />
     <Content Include="Views\AdminPanel\Tickets.cshtml" />
-    <Content Include="Views\AdminPanel\Settings.cshtml" />
+    <Content Include="Views\AdminPanel\Statistics.cshtml" />
     <Content Include="Views\UserPanel\Index.cshtml" />
     <Content Include="Views\UserPanel\WishList.cshtml" />
     <Content Include="Views\UserPanel\IgnoredList.cshtml" />
@@ -728,6 +728,13 @@
     <Content Include="Views\Ticket\Details.cshtml" />
     <Content Include="Views\Ticket\Edit.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
+    <Content Include="Views\AdminPanel\EditGame.cshtml" />
+    <Content Include="Views\AdminPanel\DeleteGame.cshtml" />
+    <Content Include="Views\AdminPanel\Categorize.cshtml" />
+    <Content Include="Views\AdminPanel\AddNewCategory.cshtml" />
+    <Content Include="Views\AdminPanel\EditUser.cshtml" />
+    <Content Include="Views\AdminPanel\DeleteCategory.cshtml" />
+    <None Include="Views\AdminPanel\DeleteUser.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
