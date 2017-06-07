@@ -126,20 +126,22 @@
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            <div class="col-md-10">
+                        <div style="margin-top: 5px !important;">
+                            <div style="margin-top: 5px !important;">
                                 @Html.TextBoxFor(m => m.LoginViewModel.Nickname, new { @class = "login", placeholder = "Twój login..." })
                                 @Html.ValidationMessageFor(m => m.LoginViewModel.Nickname, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-10">
+						<div style="width: 100%; height: 5px; clear: both;"></div>
+                        <div style="margin-top: 5px !important;">
+                            <div  style="margin-top: 5px !important;">
                                 @Html.PasswordFor(m => m.LoginViewModel.Password, new { @class = "login", placeholder = "Twoje hasło..." })
                                 @Html.ValidationMessageFor(m => m.LoginViewModel.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
+						<div style="width: 100%; height: 5px; clear: both;"></div>
+                        <div>
+                            <div>
                                 <input type="submit" value="Zaloguj się" class="login submit" />
                             </div>
                         </div>
@@ -199,7 +201,7 @@
 						<nav id="menu" class="foot-menu mobile-hidden" role="navigation">
 							<ul>
 								<li>
-									@Html.ActionLink("Strona Główna", "Index")
+									@Html.ActionLink("Strona Główna", "Index", "")
 								</li>
 								<li>
 									@Html.ActionLink("Encyklopedia", "Index", "product")
