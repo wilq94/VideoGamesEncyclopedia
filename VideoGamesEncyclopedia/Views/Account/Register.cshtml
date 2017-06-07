@@ -28,8 +28,9 @@
 <body>
 	<header class="top-bar full-width">
 		<div class="row no-margin">
-			<div class="grid-3">logo</div>
-			<div class="grid-9">
+			<div class="grid-1">/</div>
+			<div class="grid-3" style="margin-top: 11px;"><img src="~/img/logo.png" /></div>
+			<div class="grid-8">
 				<!-- Hamburger icon -->
 				<button class="menu-link"><span>Menu</span></button>
 				<!-- Navigation -->
@@ -51,7 +52,7 @@
 							@Html.ActionLink("Top gry", "Index", "product")
 						</li>
 						<li>
-							@Html.ActionLink("Kontakt", "Contact")
+							@Html.ActionLink("Kontakt", "Index", "Home/Contact")
 						</li>
 					</ul>
 				</nav>
@@ -115,7 +116,33 @@
 	<footer class="footer-bar full-width">
 		<div class="row no-margin">
 			<div class="grid-12">
-				<span class="copyright">Copyright by Filip and Pawel
+				<div class="row">
+					<div class="grid-8">
+						<!-- Navigation -->
+						<nav id="menu" class="foot-menu mobile-hidden" role="navigation">
+							<ul>
+								<li>
+									@Html.ActionLink("Strona Główna", "Index")
+								</li>
+								<li>
+									@Html.ActionLink("Encyklopedia", "Index", "product")
+								</li>
+								<li>
+									@Html.ActionLink("Rekomendacje", "Index", "recommendation")
+								</li>
+								<li>
+									@Html.ActionLink("Top gry", "Index", "product")
+								</li>
+								<li>
+									@Html.ActionLink("Kontakt", "Index", "Home/Contact")
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="grid-4" style="text-align: right; ">
+						<span class="copyright">Copyright by Filip and Pawel</span>
+					</div>
+				</div>
 			</div>
 		</div>
 		</div>
