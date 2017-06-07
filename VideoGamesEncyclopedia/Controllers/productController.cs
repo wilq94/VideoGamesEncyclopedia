@@ -29,7 +29,7 @@ namespace VideoGamesEncyclopedia.Controllers
             }
             if (sortOrder == "alpha")
             {
-                products = products.OrderByDescending(x => x.Name);
+                products = products.OrderBy(x => x.Name);
             }
 
             return View(products.ToList());

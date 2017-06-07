@@ -63,8 +63,13 @@
     </header>
     <main class="container-12" role="main">
         <section class="grid-9">
-            <div class="grid-12 main-title">Lista życzeń</div>
+            <div class="grid-12 main-title">Lista życzeń 
+</div>
+
+
+
             <div class="grid-12 content-container">
+
                 @foreach (var item in Model)
                 {
                     <div class="grid-6 last-added-row">
@@ -84,6 +89,7 @@
                         </div>
                     </div>
                 }
+                <span class="action button-gray smaller" onclick="location.href='@Url.Action("GetWishlistedGames","UserPanel")'">Pobierz listę życzeń ze Steam</span>
             </div>
         </section>
         <section class="grid-3 mobile-hidden">
